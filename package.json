@@ -16,6 +16,7 @@
     "mongodb": "^4.5.0",
     "node-fetch": "^3.2.3",
     "prompt-sync": "^4.2.0",
+    "prompts": "^2.4.2",
     "puppeteer": "^13.5.2",
     "puppeteer-core": "^13.5.2"
   }

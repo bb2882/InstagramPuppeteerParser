@@ -6,17 +6,6 @@ class InstagramLogin {
 	constructor(template) {
 		this._username = template.username
 		this._password = template.password
-		this._account = template.account
-	}
-
-	get account() {
-		return this._account
-	}
-
-	setAccountName(array) {
-		array.forEach( obj => {
-			obj.account = this._account
-		})
 	}
 
 	login() {
@@ -38,16 +27,6 @@ class InstagramLogin {
 export const template = {
 	username: prompt("Please, enter your instagram username: "),
 	password: prompt("Please, enter your instagram password: "),
-	account: (function() {
-        let question =  prompt("Do you want to work with any account? ")
-    
-        if (question.toLowerCase().trim() == "yes") {
-            return prompt("Write account name, please ").toLowerCase().trim()
-        } else {
-            return null
-        }
-        
-    })(),
 }
 
 export const myPage = new InstagramLogin(template)

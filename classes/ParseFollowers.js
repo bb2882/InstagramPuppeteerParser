@@ -1,47 +1,28 @@
-import { prompt } from './InstagramLogin.js';
-import { template as loginTemplate}  from './InstagramLogin.js';
+// import { template as parseTemplate } from './Parse.js'
 import { mongoConnection } from '../mongoDB.js';
 
 class ParseFollowers {
-    constructor(template) {
+    constructor() {
         this._account
-        this._answer = template.answer
-
-    }
-
-    get answer() {
-        return this._answer
-    }
-
-    set account(name) {
-        this._account = name
     }
 
     get account() {
-		return this._account
-	}
+        return this._account
+    }
+
+    checkForName(arr, account) {
+        arr.forEach(name => {
+            if (name == 'parse followers') {
+                this._account = account
+            }
+        })
+    }
 
     parse() {
         console.log('parsing followers')
-        
     }
 }
 
-const template = {
-    answer: (function() {
-        if (loginTemplate.account != null) {
-            let question =  prompt("Do you want to parse followers? ")
-        
-            if (question.toLowerCase().trim() == "yes") {
-                return question
-            } else {
-                return null
-            }
-        } else {
-            return null
-        }
-        
-    })()
-}
 
-export const parseFollowers = new ParseFollowers(template)
+
+export const parseFollowers = new ParseFollowers()

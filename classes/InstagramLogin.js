@@ -12,6 +12,10 @@ class InstagramLogin {
 		(async () => {
 			const browser = await puppeteer.launch({headless: false});
 			const page = await browser.newPage();
+			const pages = await browser.pages();
+			if (pages.length > 1) {
+				await pages[0].close();
+			}
 			await page.setViewport({ width: 0, height: 0 });
 			await page.goto('https://www.instagram.com/accounts/login/');
 			await page.waitFor('input[name="username"]');

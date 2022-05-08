@@ -15,8 +15,5 @@ import prompts from "prompts";
     });
 
     console.log(response);
-console.log(1)
 
 })();
-
-

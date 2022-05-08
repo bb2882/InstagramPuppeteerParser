@@ -21,13 +21,15 @@ const work = await prompts({
     name: 'value',
     message: 'What would you like to do?',
     choices: [
-        { title: "Do you want to parse followers?", value: 'parse followers' },
-        { title: "Do you want to parse followings?", value: 'parse followings' },
-        { title: "Do you want to parse posts?", value: 'parse posts' }
+        { title: "Parse followers", value: 'parse followers' },
+        { title: "Parse followings", value: 'parse followings' },
+        { title: "Parse posts", value: 'parse posts' }
     ],
     max: 3,
     hint: '- Space to select. Return to submit'
 })
+
+console.log(work)
 
 export const template = {
     work: work,
@@ -35,7 +37,7 @@ export const template = {
 	account: (function() {
         
 		if (work.value.length != 0 ) {
-			return prompt("Write account name, please ").toLowerCase().trim()
+			return prompt("Write account name, please: ").toLowerCase().trim()
 		} else {
 			return null
 		}

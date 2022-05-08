@@ -1,4 +1,3 @@
-// import { template as parseTemplate } from './Parse.js'
 import { mongoConnection } from '../mongoDB.js';
 
 class ParseFollowers {

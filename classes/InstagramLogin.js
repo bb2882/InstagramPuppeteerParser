@@ -6,16 +6,31 @@ class InstagramLogin {
 	constructor(template) {
 		this._username = template.username
 		this._password = template.password
+		this._account
 	}
 
-	login() {
+	set account(account) {
+		this._account = account
+	}
+
+    openFollowersPage(page) {
+		if (this._account) {
+			(async () => {
+				await page.waitFor('div[class="eyXLr"]')
+				await page.click('div[class="eyXLr"]')
+				await page.type('input[aria-label="Search Input"]', this._account)
+				await page.waitFor(`a[href="/${this._account}/"]`)
+				await page.click(`a[href="/${this._account}/"]`)
+			})();
+		}
+    }
+
+	login(objArr) {
 		(async () => {
 			const browser = await puppeteer.launch({headless: false});
 			const page = await browser.newPage();
 			const pages = await browser.pages();
-			if (pages.length > 1) {
-				await pages[0].close();
-			}
+			if (pages.length > 1) await pages[0].close();
 			await page.setViewport({ width: 0, height: 0 });
 			await page.goto('https://www.instagram.com/accounts/login/');
 			await page.waitFor('input[name="username"]');
@@ -24,6 +39,14 @@ class InstagramLogin {
 			await page.focus('input[name="password"]');
 			await page.keyboard.type(this._password);
 			await page.click('button[type="submit"]');
+
+			this.openFollowersPage(page)
+
+			if (objArr) {
+				objArr.forEach(obj => {
+					obj.parse(page)
+				})
+			} 
 		})();
 	}
 }

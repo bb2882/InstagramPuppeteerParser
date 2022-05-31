@@ -9,3 +9,5 @@ npm install
 node index
 ```
 - Enter your username and password
+- Choose what you want to parse
+- Write down account name that you want to work on

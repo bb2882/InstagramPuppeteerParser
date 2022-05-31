@@ -21,9 +21,9 @@ const work = await prompts({
     name: 'value',
     message: 'What would you like to do?',
     choices: [
-        { title: "Parse followers", value: 'parse followers' },
-        { title: "Parse followings", value: 'parse followings' },
-        { title: "Parse posts", value: 'parse posts' }
+        { title: "Parse followers", value: 'followers' },
+        { title: "Parse followings", value: 'following' },
+        { title: "Parse posts", value: 'posts' }
     ],
     max: 3,
     hint: '- Space to select. Return to submit'

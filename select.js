@@ -17,3 +17,57 @@ import prompts from "prompts";
     console.log(response);
 
 })();
+
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('test1')
+        resolve()
+    },1000)
+})
+
+promise
+.then(() => {
+    return new Promise(() => {
+        setTimeout(() => {
+            console.log('test2')
+        },1000)
+    })
+})
+.then(() => {
+    return new Promise(() => {
+        setTimeout(() => {
+            console.log('test3')
+        },1000)
+    })
+})
+.then(() => {
+    return new Promise(() => {
+        setTimeout(() => {
+            console.log('test4')
+        },1000)
+    })
+})
+
+function range(first, second, third) {
+    let fin = []
+    while (first != second -1) {
+        fin.push(first)
+        first += third
+    }
+    return fin
+}
+
+let res = range(5,2, -1)
+console.log(res)
+
+function sum(arr) {
+    let fin = 0
+    for(let i = 0; i < arr.length; i++) {
+        fin += arr[i]
+    }
+    return fin
+}
+
+let summ = sum(res)
+
+console.log(summ)

@@ -53,4 +53,3 @@ export const mongoConnection = (tableName, parser, parseUrl) => {
 }
 
 //mongoConnection('followers', parse, "https://remoteok.io/remote-javascript-jobs");
-

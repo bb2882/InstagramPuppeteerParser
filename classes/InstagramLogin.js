@@ -39,13 +39,17 @@ class InstagramLogin {
 			await page.focus('input[name="password"]');
 			await page.keyboard.type(this._password);
 			await page.click('button[type="submit"]');
-
 			this.openFollowersPage(page)
+			await page.waitForSelector('.zw3Ow')
 
 			if (objArr) {
-				objArr.forEach(obj => {
-					obj.parse(page)
-				})
+
+				objArr.reduce((promiseChain, item) => {
+					return promiseChain.then(() => new Promise((resolve) => {
+					  item.mongoConnection(item.tableName, item.parse, item.tableName, resolve, page);
+					}));
+				}, Promise.resolve());
+
 			} 
 		})();
 	}

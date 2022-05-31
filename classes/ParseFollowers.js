@@ -1,27 +1,12 @@
-import { mongoConnection } from '../mongoDB.js';
+import ExtendableParse from "./ExtendableParse.js";
 
-class ParseFollowers {
+class ParseFollowers extends ExtendableParse {
     constructor() {
+        super()
         this._account
+        this.tableName = 'followers'
     }
 
-    get account() {
-        return this._account
-    }
-
-    checkForName(arr, account) {
-        arr.forEach(name => {
-            if (name == 'parse followers') {
-                this._account = account
-            }
-        })
-    }
-
-    parse() {
-        console.log('parsing followers')
-    }
 }
-
-
 
 export const parseFollowers = new ParseFollowers()

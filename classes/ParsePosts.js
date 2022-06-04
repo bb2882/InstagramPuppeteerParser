@@ -9,10 +9,10 @@ class ParsePosts extends ExtendableParse {
 
     async parse(res, page, type, jobs, context) {
 
-        await page.waitFor('.g47SY')
+        await page.waitFor('._ac2a')
         
         let count = +(await page.evaluate(() => {
-            return document.querySelector('.g47SY').innerText
+            return document.querySelector('._ac2a').innerText
         }))
 
         let allUrls = await page.evaluate(async (count) => {
@@ -23,7 +23,7 @@ class ParsePosts extends ExtendableParse {
                     score +=12
 
                     window.scrollBy(0, 1000)
-                    Array.from(document.querySelectorAll('.v1Nh3 a')).forEach(post => {
+                    Array.from(document.querySelectorAll('._aanf a')).forEach(post => {
                         data.push(post.href)
                     })
 

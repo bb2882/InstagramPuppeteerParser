@@ -6,7 +6,6 @@ class ParseFollowings extends ExtendableParse {
         this._account
         this.tableName = 'following'
     }
-
     
 }
 

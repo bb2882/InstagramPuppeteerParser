@@ -40,7 +40,7 @@ class InstagramLogin {
 			await page.keyboard.type(this._password);
 			await page.click('button[type="submit"]');
 			this.openFollowersPage(page)
-			await page.waitForSelector('.zw3Ow')
+			await page.waitForSelector('._aa_h')
 
 			if (objArr) {
 

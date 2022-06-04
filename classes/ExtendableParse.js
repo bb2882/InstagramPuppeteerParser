@@ -21,31 +21,34 @@ export default class ExtendableParse {
         await page.waitFor(`a[href="/${context._account}/${type}/"]`)
         
         let count = +(await page.evaluate((account, type) => {
+            console.log(document.querySelector(`a[href="/${account}/${type}/"]`))
             return document.querySelector(`a[href="/${account}/${type}/"] div span`).innerText
         }, context._account, type))
 
-        await page.click(`a[href="/${context._account}/${type}/"]`)
+        await page.evaluate((context, type) => {
+            document.querySelector(`a[href="/${context._account}/${type}/"]`).click()
+        }, context, type)
 
         let scrollUserList = setInterval(async () => {
-            if(await page.waitFor('div.isgrP')) {
+            if(await page.waitForSelector('div._aano')) {
                 page.evaluate(() => {
-                    document.querySelector('div.isgrP').scrollBy(0, 1000)
+                    document.querySelector('div._aano').scrollBy(0, 1000)
                 })
 
                 score+=12
                 if (score > count + 12) {
                     clearInterval(scrollUserList)
                     let names = await page.evaluate(() => {
-                        const arr = Array.from(document.querySelectorAll('._0imsa ._7UhW9'))
+                        const arr = Array.from(document.querySelectorAll('._aade'))
                         return arr.map(span => span.innerText)
                     }),
                     descs = await page.evaluate(() => {
-                        const arr = Array.from(document.querySelectorAll('.enpQJ .wFPL8'))
+                        const arr = Array.from(document.querySelectorAll('._aaeq'))
                         return arr.map(span => span.innerText)
                     });
                     
                     await page.evaluate(() => {
-                        document.querySelector('._4EzTm  .wpO6b').click()
+                        document.querySelector('._ab9y ._abl-').click()
                     })
 
                     let data = []

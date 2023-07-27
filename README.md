@@ -55,4 +55,4 @@ If you find any issues or have suggestions to improve this project, feel free to
 
 This project is intended for educational and personal use only. The developer is not responsible for any misuse or violation of Instagram's terms of service. Use this tool responsibly and at your own risk.
 
-Happy parsing! 😊
+Happy parsing!
